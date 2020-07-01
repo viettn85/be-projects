@@ -1,19 +1,50 @@
-GET http://localhost:5000
+### ERRORS
+GET http://localhost:5000/abc
 
+### PRODUCTS
 ###
 GET http://localhost:5000/products/
 
 ###
 POST http://localhost:5000/products/
+Content-Type: application/json
+
+{
+    "name": "Candy",
+    "price": 10
+}
 
 ###
-GET http://localhost:5000/products/20
+GET http://localhost:5000/products/5efd0832a7a9b9e54bb75b1a
 
+###
+DELETE http://localhost:5000/products/
+Content-Type: application/json
+
+{
+    "id": "5efd0832a7a9b9e54bb75b1a"
+}
+
+###
+PATCH http://localhost:5000/products/5efd11a8a93e91e7b1ef6e69
+Content-Type: application/json
+
+{
+    "name": "Candy",
+    "price": 13
+}
+### ORDERS
 ###
 GET http://localhost:5000/orders/
 
 ###
 POST http://localhost:5000/orders/
+Content-Type: application/json
 
+{
+    "productId": "Candy",
+    "quantity": 10
+}
 ###
 GET http://localhost:5000/orders/20
+
