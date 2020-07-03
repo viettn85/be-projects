@@ -4,29 +4,32 @@ GET http://localhost:5000/abc
 ### PRODUCTS
 ###
 GET http://localhost:5000/products/
-
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAYWJjLmNvbSIsIl9pZCI6IjVlZmYyY2FjOTY1ZmQyNDU0YmYyMTIxMiIsImlhdCI6MTU5Mzc4NzI5NCwiZXhwIjoxNTkzNzkwODk0fQ.Dx3FAK4LCChBHEW_OSijlLpu5j4cU71-9dOo6rZHnYc
 ###
 POST http://localhost:5000/products/
 Content-Type: application/json
 
 {
-    "name": "Candy",
-    "price": 10
+    "name": "Cake",
+    "price": 10,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAYWJjLmNvbSIsIl9pZCI6IjVlZmYyY2FjOTY1ZmQyNDU0YmYyMTIxMiIsImlhdCI6MTU5Mzc4Mjg2MSwiZXhwIjoxNTkzNzg2NDYxfQ.eOfqbV63iwvSH4hq-r7_BV0qkOMtk-TVCyQVc-IO8vg"
 }
 
 ###
-GET http://localhost:5000/products/5efd0832a7a9b9e54bb75b1a
+GET http://localhost:5000/products/5efe2a44923dae1120299505
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAYWJjLmNvbSIsIl9pZCI6IjVlZmYyY2FjOTY1ZmQyNDU0YmYyMTIxMiIsImlhdCI6MTU5Mzc4Mjg2MSwiZXhwIjoxNTkzNzg2NDYxfQ.eOfqbV63iwvSH4hq-r7_BV0qkOMtk-TVCyQVc-IO8vg
 
 ###
 DELETE http://localhost:5000/products/
 Content-Type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAYWJjLmNvbSIsIl9pZCI6IjVlZmYyY2FjOTY1ZmQyNDU0YmYyMTIxMiIsImlhdCI6MTU5Mzc4Mjg2MSwiZXhwIjoxNTkzNzg2NDYxfQ.eOfqbV63iwvSH4hq-r7_BV0qkOMtk-TVCyQVc-IO8vg
 
 {
-    "id": "5efd0832a7a9b9e54bb75b1a"
+    "id": "5efd11a8a93e91e7b1ef6e69"
 }
 
 ###
-PATCH http://localhost:5000/products/5efd11a8a93e91e7b1ef6e69
+PATCH http://localhost:5000/products/5efd07ff62311fe52eeb3fcb
 Content-Type: application/json
 
 {
@@ -36,15 +39,61 @@ Content-Type: application/json
 ### ORDERS
 ###
 GET http://localhost:5000/orders/
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAYWJjLmNvbSIsIl9pZCI6IjVlZmYyY2FjOTY1ZmQyNDU0YmYyMTIxMiIsImlhdCI6MTU5Mzc4Mjg2MSwiZXhwIjoxNTkzNzg2NDYxfQ.eOfqbV63iwvSH4hq-r7_BV0qkOMtk-TVCyQVc-IO8vg
 
 ###
 POST http://localhost:5000/orders/
 Content-Type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAYWJjLmNvbSIsIl9pZCI6IjVlZmYyY2FjOTY1ZmQyNDU0YmYyMTIxMiIsImlhdCI6MTU5Mzc4Mjg2MSwiZXhwIjoxNTkzNzg2NDYxfQ.eOfqbV63iwvSH4hq-r7_BV0qkOMtk-TVCyQVc-IO8vg
 
 {
-    "productId": "Candy",
-    "quantity": 10
+    "product": "5efd11a8a93e91e7b1ef6e69",
+    "quantity": 14
 }
-###
-GET http://localhost:5000/orders/20
 
+Content-Disposition: form-data; name="file"; filename="1.png"
+# Content-Type: application/octet-stream
+
+###
+POST http://localhost:5000/products/
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+Content-Disposition: form-data; name="Lop"
+Content-Disposition: form-data; price="10"
+Content-Disposition: form-data; name="image"; filename="1.png"
+
+###
+GET http://localhost:5000/orders/5efe4e4f2746931cca4500ba
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAYWJjLmNvbSIsIl9pZCI6IjVlZmYyY2FjOTY1ZmQyNDU0YmYyMTIxMiIsImlhdCI6MTU5Mzc4Mjg2MSwiZXhwIjoxNTkzNzg2NDYxfQ.eOfqbV63iwvSH4hq-r7_BV0qkOMtk-TVCyQVc-IO8vg
+
+###
+DELETE http://localhost:5000/orders/5efe4bd55c0ee01b5ee2ba2a
+###
+
+### USERS
+###
+POST http://localhost:5000/user/signup
+Content-Type: application/json
+
+{
+    "email": "test2@abc.com",
+    "password": "abc"
+}
+
+###
+POST http://localhost:5000/user/signin
+Content-Type: application/json
+
+{
+    "email": "test3@abc.com",
+    "password": "abc"
+}
+
+
+###
+DELETE http://localhost:5000/user
+Content-Type: application/json
+
+{
+    "email": "test@abc.com"
+}

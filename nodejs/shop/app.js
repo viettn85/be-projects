@@ -7,10 +7,12 @@ require('dotenv').config({ path: __dirname + '/dev.env' });
 
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/user');
 
 mongoose.connect(process.env.MONGO_ATLAS);
 
 app.use(morgan('dev'));
+app.use('/upload', express.static('upload'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -29,6 +31,7 @@ app.use((req, res, next) => {
 
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/user', userRoutes);
 
 app.use((req, res, next) => {
   var error = new Error('Not Found');
